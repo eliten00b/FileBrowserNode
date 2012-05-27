@@ -1,4 +1,5 @@
 div= "Files in " + path
 - for(var i = 0; i < files.length; ++i)
   - var file = files[i]
-  div= file.path
+  - var cl   = file.isDir ? "dir" : ""
+  div(class=cl)= file.path
