@@ -1,9 +1,9 @@
 - if(path != '/') { path += '/' }
-div= "Files in " + path
+h1 Files in #{path}
 - for(var i = 0; i < files.length; ++i)
   - var file = files[i]
-  - var cl   = file.isDir ? "dir" : ""
+  - var cl   = file.isDir ? "dir" : "file"
   - var link = path + file.path
   div
     span.file-size #{file.hSize.size} #{file.hSize.unit}B
-    a(href=link,class=cl)= file.path
+    a(href=link,class=cl) #{file.path}
