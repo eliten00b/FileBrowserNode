@@ -19,10 +19,7 @@ var onRequest = function(req, res) {
 
   if(check === 1) {
     files = readDir(fullPath)
-    res.writeHead(200, { "Content-Type": "text/plain" })
-    res.write("Files from dir '" + path + "':\n")
-    res.write(files.join('\n'))
-    res.end()
+    res.render('files', { title: path, path: path, files: files })
   } else {
     res.render('404', { title: '404', path: path })
   }
