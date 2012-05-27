@@ -32,6 +32,8 @@ var onRequest = function(req, res) {
         files: files,
         backLink: backLink
     })
+  } else if(check === 2){
+    res.download(fullPath)
   } else {
     res.render('404', { title: '404 - ' + path, path: path })
   }
