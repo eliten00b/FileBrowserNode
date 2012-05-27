@@ -33,7 +33,7 @@ var onRequest = function(req, res) {
         backLink: backLink
     })
   } else {
-    res.render('404', { title: '404', path: path })
+    res.render('404', { title: '404 - ' + path, path: path })
   }
 }
 
