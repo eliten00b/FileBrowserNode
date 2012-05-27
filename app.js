@@ -12,7 +12,7 @@ var app = module.exports = express.createServer()
 // functions
 
 var onRequest = function(req, res) {
-  var path     = url.parse(req.url).pathname
+  var path     = decodeURI(url.parse(req.url).pathname)
     , fullPath = config.rootDir + path
     , check    = existAndFileOrDir(fullPath)
     , files
