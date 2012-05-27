@@ -58,11 +58,46 @@ var readDir = function(dir) {
         return files
       }
     )
+    files = getFilesStat(files)
+    files = orderByTypeAndName(files)
   } else {
     files = false
   }
 
   return files
+}
+
+var getFilesStat = function(files) {
+  var fileStats = []
+
+  for(var i = 0; i < files.length; ++i) {
+    var file = files[i]
+      , stat = fs.statSync(file)
+
+    fileStats.push({
+        path: file,
+        isDir: stat.isDirectory()
+    })
+  }
+
+  return fileStats
+}
+
+var orderByTypeAndName = function(filesWithInfo) {
+  var dirs = []
+    , files = []
+    , file
+
+  for(var i = 0; i < filesWithInfo.length; ++i) {
+    file = filesWithInfo[i]
+    if(file.isDir) {
+      dirs.push(file)
+    } else {
+      files.push(file)
+    }
+  }
+
+  return dirs.concat(files)
 }
 
 // configure app
