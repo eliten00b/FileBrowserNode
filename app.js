@@ -16,10 +16,22 @@ var onRequest = function(req, res) {
     , fullPath = config.rootDir + path
     , check    = existAndFileOrDir(fullPath)
     , files
+    , backLink
 
   if(check === 1) {
+    backLink = path.split('/')
+    backLink.pop()
+    backLink = backLink.join('/')
+    if(backLink == '') { backLink = '/' }
+
     files = readDir(fullPath)
-    res.render('files', { title: path, path: path, files: files })
+
+    res.render('files', {
+        title: path,
+        path: path,
+        files: files,
+        backLink: backLink
+    })
   } else {
     res.render('404', { title: '404', path: path })
   }
