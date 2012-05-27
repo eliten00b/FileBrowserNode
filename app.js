@@ -58,7 +58,7 @@ var readDir = function(dir) {
         return files
       }
     )
-    files = getFilesStat(files)
+    files = getFilesStat(files, dir)
     files = orderByTypeAndName(files)
   } else {
     files = false
@@ -67,12 +67,12 @@ var readDir = function(dir) {
   return files
 }
 
-var getFilesStat = function(files) {
+var getFilesStat = function(files, dir) {
   var fileStats = []
 
   for(var i = 0; i < files.length; ++i) {
     var file = files[i]
-      , stat = fs.statSync(file)
+      , stat = fs.statSync(dir + '/' + file)
 
     fileStats.push({
         path: file,
