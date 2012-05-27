@@ -19,12 +19,12 @@ var onRequest = function(req, res) {
 
   if(check === 1) {
     files = readDir(fullPath)
-    res.writeHead(200, {"Content-Type": "text/plain"})
+    res.writeHead(200, { "Content-Type": "text/plain" })
     res.write("Files from dir '" + path + "':\n")
     res.write(files.join('\n'))
     res.end()
   } else {
-    res.render('404', {path: path})
+    res.render('404', { title: '404', path: path })
   }
 }
 
@@ -75,7 +75,6 @@ app.configure(function() {
   app.use(express.favicon("./favicon.ico"))
   app.use(app.router)
   app.set('view engine', 'jade')
-  app.set('view options', { layout: false })
 })
 
 // configure environments
