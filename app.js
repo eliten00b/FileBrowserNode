@@ -76,7 +76,9 @@ var getFilesStat = function(files, dir) {
 
     fileStats.push({
         path: file,
-        isDir: stat.isDirectory()
+        isDir: stat.isDirectory(),
+        size: stat.size,
+        hSize: humanFileSize(stat.size)
     })
   }
 
@@ -98,6 +100,29 @@ var orderByTypeAndName = function(filesWithInfo) {
   }
 
   return dirs.concat(files)
+}
+
+var humanFileSize = function(size) {
+  var unit = 0
+
+  while((size / 1024) > 1) {
+    size = size / 1024
+    ++unit
+  }
+
+  size = Math.round(size * 1000) / 1000
+
+  switch(unit) {
+    case 0: unit = ''
+    break
+    case 1: unit = 'K'
+    break
+    case 2: unit = 'M'
+    break
+    case 3: unit = 'G'
+    break
+  }
+  return {size: size, unit: unit}
 }
 
 // configure app

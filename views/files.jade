@@ -5,4 +5,5 @@ div= "Files in " + path
   - var cl   = file.isDir ? "dir" : ""
   - var link = path + file.path
   div
+    span.file-size #{file.hSize.size} #{file.hSize.unit}B
     a(href=link,class=cl)= file.path
