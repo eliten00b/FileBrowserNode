@@ -94,7 +94,7 @@ app.configure('production', function(){
 
 app.get('/*', onRequest)
 
-// bind app-express to port
+// bind app to port
 
 app.listen(3322)
 console.log('Server run...')
