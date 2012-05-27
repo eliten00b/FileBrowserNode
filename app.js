@@ -22,10 +22,10 @@ var onRequest = function(req, res) {
     res.writeHead(200, {"Content-Type": "text/plain"})
     res.write("Files from dir '" + path + "':\n")
     res.write(files.join('\n'))
+    res.end()
   } else {
-    res.send('<h1 style="color:red;">404</h1><div>' + path + ' not found.</div><div>THE END.</div>', 404)
+    res.render('404', {path: path})
   }
-  res.end()
 }
 
   // return 1 if dir, 2 is file, 0 not exist or not file or dir
@@ -74,6 +74,8 @@ app.configure(function() {
   app.use(express.logger())
   app.use(express.favicon("./favicon.ico"))
   app.use(app.router)
+  app.set('view engine', 'jade')
+  app.set('view options', { layout: false })
 })
 
 // configure environments
