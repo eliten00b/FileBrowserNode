@@ -2,5 +2,6 @@ div= "Files in " + path
 - for(var i = 0; i < files.length; ++i)
   - var file = files[i]
   - var cl   = file.isDir ? "dir" : ""
+  - var link = path + "/" + file.path
   div
-    a(href=file.path,class=cl)= file.path
+    a(href=link,class=cl)= file.path
