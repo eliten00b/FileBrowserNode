@@ -7,6 +7,6 @@ a(href=backLink,class='back') parent directory
   - var file = files[i]
   - var cl   = file.isDir ? "dir" : "file"
   - var link = path + file.path
-  div
+  div.line
     span.file-size #{file.hSize.size} #{file.hSize.unit}B
     a(href=link,class=cl) #{file.path}
