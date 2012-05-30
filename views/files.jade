@@ -1,12 +1,13 @@
-- if(path != '/') { path += '/' }
+- if(rPath != '/r/') { rPath += '/' }
 h1 Files in #{path}
 
-a(href=backLink,class='back') parent directory
+- if(backLink != '')
+  a(href=backLink,class='back') goto parent directory
 
 - for(var i = 0; i < files.length; ++i)
   - var file = files[i]
   - var cl   = file.isDir ? "dir" : "file"
-  - var link = path + file.path
+  - var link = rPath + file.path
   div.line
     span.file-size #{file.hSize.size} #{file.hSize.unit}B
     a(href=link,class=cl) #{file.path}

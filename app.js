@@ -12,23 +12,29 @@ var app = module.exports = express.createServer()
 // functions
 
 var onRequest = function(req, res) {
-  var path     = decodeURI(url.parse(req.url).pathname)
+  var rPath    = decodeURI(url.parse(req.url).pathname)
+    , path     = rPath.replace(/^\/r/, '')
     , fullPath = config.rootDir + path
     , check    = existAndFileOrDir(fullPath)
     , files
     , backLink
 
   if(check === 1) {
-    backLink = path.split('/')
+    backLink = rPath.split('/')
     backLink.pop()
     backLink = backLink.join('/')
-    if(backLink == '') { backLink = '/' }
+    if(path == '/') {
+      backLink = ''
+    } else if(backLink == '/r') {
+      backLink = '/r/'
+    }
 
     files = readDir(fullPath)
 
     res.render('files', {
         title: path,
         path: path,
+        rPath: rPath,
         files: files,
         backLink: backLink
     })
@@ -162,7 +168,10 @@ app.configure('production', function(){
 
 // routes
 
-app.get('/*', onRequest)
+app.get('/r/*', onRequest)
+app.get(/^\//, function(req, res) {
+  res.redirect('/r/')
+})
 
 // bind app to port
 
