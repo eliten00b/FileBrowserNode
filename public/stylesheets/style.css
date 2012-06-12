@@ -26,9 +26,9 @@ h1 {
 }
 
 .line {
-  background: -moz-linear-gradient(top, rgba(180, 180, 180, 0.6) 0%, black 50%) no-repeat;
-  background: -webkit-linear-gradient(top, rgba(180, 180, 180, 0.6) 0%, black 50%) no-repeat;
-  background: linear-gradient(top, rgba(180, 180, 180, 0.6) 0%, black 50%) no-repeat;
+  background: -moz-linear-gradient(top, rgba(180, 180, 180, 0.6) 0%, grey 50%) no-repeat;
+  background: -webkit-linear-gradient(top, rgba(180, 180, 180, 0.6) 0%, grey 50%) no-repeat;
+  background: linear-gradient(top, rgba(180, 180, 180, 0.6) 0%, grey 50%) no-repeat;
   line-height: 20px;
   margin: 5px 0;
   border-radius: 5px;
