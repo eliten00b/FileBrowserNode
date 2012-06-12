@@ -33,9 +33,9 @@ app.configure('production', function(){
 
 // routes
 
-app.get('/r/*', routes.index)
+app.get('/root/*', routes.index)
 app.get('/', function(req, res) {
-  res.redirect('/r/')
+  res.redirect('/root/')
 })
 
 // bind app to port

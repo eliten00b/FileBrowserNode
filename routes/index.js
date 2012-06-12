@@ -5,7 +5,7 @@ const url         = require("url")
 
 exports.index = function(req, res) {
   var rPath    = decodeURI(url.parse(req.url).pathname)
-    , path     = rPath.replace(/^\/r/, '')
+    , path     = rPath.replace(/^\/root/, '')
     , fullPath = config.rootDir + path
     , check    = fileHelpers.existAndFileOrDir(fullPath)
     , files
@@ -17,8 +17,8 @@ exports.index = function(req, res) {
     backLink = backLink.join('/')
     if(path == '/') {
       backLink = ''
-    } else if(backLink == '/r') {
-      backLink = '/r/'
+    } else if(backLink == '/root') {
+      backLink = '/root/'
     }
 
     files = fileHelpers.readDir(fullPath)
