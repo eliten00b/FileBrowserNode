@@ -1,0 +1,52 @@
+body {
+  color: white;
+  background: #333333;
+  background-image: url('/images/bg.gif');
+  font-family: arial;
+  font-size: 16px;
+}
+
+a {
+  color: lime;
+  text-decoration: none;
+}
+
+a:hover {
+  color: red;
+}
+
+h1 {
+  background: black;
+}
+
+.back {
+  font-size: 18px;
+  background: black;
+  padding: 3px 5px;
+}
+
+.line {
+  background: -moz-linear-gradient(top, rgba(180, 180, 180, 0.6) 0%, black 50%) no-repeat;
+  background: -webkit-linear-gradient(top, rgba(180, 180, 180, 0.6) 0%, black 50%) no-repeat;
+  background: linear-gradient(top, rgba(180, 180, 180, 0.6) 0%, black 50%) no-repeat;
+  line-height: 20px;
+  margin: 5px 0;
+  border-radius: 5px;
+  border: solid 1px #6f6f6f;
+  text-shadow: 1px 1px grey;
+}
+
+.dir {
+  color: yellow;
+}
+
+.file {
+  color: cyan;
+}
+
+.file-size {
+  display: inline-block;
+  width: 100px;
+  text-align: right;
+  padding-right: 5px;
+}

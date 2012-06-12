@@ -2,47 +2,5 @@
 html
   head
     title= title
-    style
-      body {
-        color: white;
-        background: #181818;
-        font-family: arial;
-        font-size: 16px;
-      }
-
-      a {
-        color: lime;
-        text-decoration: none;
-      }
-
-      a:hover {
-        color: red;
-      }
-
-      .back {
-        font-size: 18px;
-      }
-
-      .line {
-        background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.2) 0%, black 60%) no-repeat;
-        background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.2) 0%, black 60%) no-repeat;
-        background: linear-gradient(top, rgba(255, 255, 255, 0.2) 0%, black 60%) no-repeat;
-        line-height: 20px;
-        margin: 5px 0;
-      }
-
-      .dir {
-        color: wheat;
-      }
-
-      .file {
-        color: lightblue;
-      }
-
-      .file-size {
-        display: inline-block;
-        width: 100px;
-        text-align: right;
-        padding-right: 5px;
-      }
+    link(rel='stylesheet', href='/stylesheets/style.css')
   body!= body

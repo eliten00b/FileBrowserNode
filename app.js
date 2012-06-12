@@ -152,6 +152,7 @@ app.configure(function() {
   app.use(express.favicon("./favicon.ico"))
   app.use(app.router)
   app.set('view engine', 'jade')
+  app.use(express.static(__dirname + '/public'))
 })
 
 // configure environments
