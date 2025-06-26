@@ -1,44 +1,53 @@
 // constants
 
+const http = require("http")
 const express = require("express")
-    , fs      = require("fs")
-    , config  = JSON.parse(fs.readFileSync("./config/config.json"))
-    , routes  = require('./routes')
+const routes = require("./routes")
+const path = require("path")
+
+const favicon = require("serve-favicon")
+const logger = require("morgan")
+const errorHandler = require("errorhandler")
+
+const fs = require("fs")
+const config = JSON.parse(fs.readFileSync("./config/config.json"))
 
 // variables
 
-var app = module.exports = express.createServer()
+var app = express()
 
 // configure app
 
-app.configure(function() {
-  app.use(express.logger())
-  app.use(express.favicon("./favicon.ico"))
-  app.use(app.router)
-  app.set('view engine', 'jade')
-  app.use(express.static(__dirname + '/public'))
-})
+app.set("port", 3322)
+app.set("views", path.join(__dirname, "views"))
+app.set("view engine", "pug")
+
+app.use(logger("dev"))
+app.use(favicon(path.join(__dirname, "favicon.ico")))
+app.use(express.static(path.join(__dirname, "public")))
 
 // configure environments
 
-app.configure('development', function(){
+if (app.get("env") === "development") {
   console.log('Server will run in "development" environment.')
-  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }))
-})
+  app.use(errorHandler({ dumpExceptions: true, showStack: true }))
+}
 
-app.configure('production', function(){
+if (app.get("env") === "production") {
   console.log('Server will run in "production" environment.')
-  app.use(express.errorHandler())
-})
+  app.use(errorHandler())
+}
 
 // routes
 
-app.get('/root/*', routes.index)
-app.get('/', function(req, res) {
-  res.redirect('/root/')
+app.get("/root/*", routes.index)
+app.get("/", function(req, res) {
+  res.redirect("/root/")
 })
 
 // bind app to port
 
-app.listen(3322)
-console.log('Server run...')
+var server = http.createServer(app)
+server.listen(app.get('port'), () => {
+  console.log("Server run... http://localhost:" +  + app.get('port'))
+})
