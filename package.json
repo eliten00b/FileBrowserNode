@@ -1,17 +1,20 @@
 {
   "author": "Martin Bormeister",
   "name": "FileServerNode",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "repository": {
     "url": ""
   },
   "main": "app.js",
   "engines": {
-    "node": "~0.6.2"
+    "node": "v18.20.5",
+    "npm": "10.8.2"
   },
   "dependencies": {
-    "express": "2.5.8",
-    "jade": ">= 0.0.1"
-  },
-  "devDependencies": {}
+    "errorhandler": "^1.5.1",
+    "express": "4.20.0",
+    "morgan": "^1.10.0",
+    "pug": "^3.0.3",
+    "serve-favicon": "^2.5.1"
+  }
 }
